@@ -1,5 +1,5 @@
 import User from "../models/user.model.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { esp32Socket } from "../../server.js";
 
@@ -17,11 +17,10 @@ export const register = async (req, res) => {
     if (existingUser) {
       return res
         .status(400)
-        .json({ success: false, message: "User alreadye exist" });
+        .json({ success: false, message: "User already exist" });
     }
 
-    const salt = await bcrypt.genSalt(12);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const hashedPassword = await bcrypt.hash(password, 12);
 
     const newUser = new User({
       username,
