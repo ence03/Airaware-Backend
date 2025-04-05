@@ -21,8 +21,3 @@
 
 - **User passwords** are hashed using **bcryptjs**
 - **JWT(JSON Web Token)** is used for secure authentication
-
-**API Endpoints Example**
-
-**Method**          **Endpoint**        **Description**
-POST                  /api/login           User login
